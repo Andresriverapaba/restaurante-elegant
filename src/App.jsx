@@ -1,4 +1,10 @@
-import { HashRouter as Router } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  Navigate
+} from "react-router-dom";
+
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -19,8 +25,10 @@ import "./App.css";
 // Ruta protegida
 function PrivateRoute({ children, role }) {
   const { user } = useAuth();
+
   if (!user) return <Navigate to="/login" />;
   if (role && user.rol !== role) return <Navigate to="/menu" />;
+
   return children;
 }
 
@@ -68,7 +76,6 @@ function AppContent() {
           }
         />
 
-        {/* Nueva ruta de factura */}
         <Route
           path="/factura/:pedidoId"
           element={
@@ -78,7 +85,7 @@ function AppContent() {
           }
         />
 
-        {/* Redirección */}
+        {/* Redirección inicial */}
         <Route
           path="/"
           element={
