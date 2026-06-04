@@ -1,0 +1,118 @@
+.admin-pedidos-container {
+  padding: 20px;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.admin-pedidos-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #800020;
+  font-size: 1.8rem;
+}
+
+.tabla-pedidos-admin {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  display: block;
+  overflow-x: auto;
+}
+
+.tabla-pedidos-admin thead {
+  background-color: #800020;
+  color: #fff;
+}
+
+.tabla-pedidos-admin th,
+.tabla-pedidos-admin td {
+  text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid #4b0a0a;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.tabla-pedidos-admin tr:hover {
+  background-color: #f9f9f9;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.detalles-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.detalles-lista li {
+  font-size: 0.9rem;
+  padding: 3px 0;
+}
+
+button {
+  background-color: #800020;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #a00025;
+}
+
+select {
+  background-color: #800020;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+select:hover {
+  background-color: #a00025;
+}
+
+p {
+  text-align: center;
+  color: #555;
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .tabla-pedidos-admin th,
+  .tabla-pedidos-admin td {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  .admin-pedidos-container h2 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabla-pedidos-admin th,
+  .tabla-pedidos-admin td {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+
+  button,
+  select {
+    padding: 8px 12px;
+    width: 100%;
+    margin-bottom: 6px;
+  }
+}

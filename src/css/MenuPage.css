@@ -1,0 +1,133 @@
+.menu-container {
+  background-color: #1e1e1e;
+  min-height: 100vh;
+  padding: 50px 20px;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  text-align: center;
+}
+
+/* Título */
+.menu-container h2 {
+  color: #fff;
+  background: linear-gradient(90deg, #800020, #a00030);
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(128, 0, 32, 0.4);
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+
+/* Grid con separación más amplia entre tarjetas */
+.platos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 35px; /* MÁS SEPARACIÓN */
+  justify-items: center;
+}
+
+/* Tarjeta estilo limpio como admin */
+.plato-card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #ddd; /* parecido al admin */
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+  text-align: center;
+  width: 100%;
+  max-width: 270px;
+  padding-bottom: 15px;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.plato-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 22px rgba(128, 0, 32, 0.35);
+}
+
+.plato-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 14px 14px 0 0;
+  border-bottom: 1px solid #eee; /* estilo más limpio */
+}
+
+.plato-card h3 {
+  color: #800020;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 12px 0 6px;
+}
+
+.plato-card p {
+  color: #555;
+  font-size: 0.9rem;
+  min-height: 45px;
+  margin: 0 15px 12px;
+}
+
+.precio {
+  color: #800020;
+  font-weight: bold;
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+}
+
+.plato-card button {
+  background-color: #800020;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.plato-card button:hover {
+  background-color: #a00025;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(128, 0, 32, 0.4);
+}
+
+/* Responsivo */
+@media (max-width: 700px) {
+  .platos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+  }
+
+  .plato-card {
+    max-width: 230px;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-container h2 {
+    font-size: 1.5rem;
+    padding: 8px 20px;
+  }
+
+  .plato-card {
+    max-width: 210px;
+  }
+}
+
+@media (max-width: 420px) {
+  .platos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plato-card {
+    max-width: 100%;
+  }
+
+  .plato-card img {
+    height: 150px;
+  }
+}

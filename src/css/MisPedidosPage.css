@@ -1,0 +1,130 @@
+.mis-pedidos-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  color: #222;
+  text-align: center;
+}
+
+.mis-pedidos-container h2 {
+  color: #800020;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+}
+
+.loading,
+.no-pedidos {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.pedidos-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.pedido-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  transition: transform 0.2s ease;
+}
+
+.pedido-card:hover {
+  transform: scale(1.02);
+}
+
+.pedido-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #800020;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.pedido-id {
+  font-weight: bold;
+  color: #800020;
+}
+
+.pedido-fecha {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.pedido-detalles {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+  color: #333;
+  text-align: left;
+}
+
+.pedido-total {
+  font-size: 1rem;
+  color: #333;
+  margin-top: 10px;
+}
+
+.estado {
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.estado.pendiente {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.estado.preparando {
+  background: #cce5ff;
+  color: #004085;
+}
+
+.estado.listo {
+  background: #d4edda;
+  color: #155724;
+}
+
+.estado.entregado {
+  background: #b8e0b8;
+  color: #155724;
+}
+
+.estado.cancelado {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+@media (max-width: 600px) {
+  .mis-pedidos-container {
+    padding: 15px;
+  }
+
+  .mis-pedidos-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .pedido-card {
+    padding: 12px;
+  }
+
+  .pedido-header {
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+
+  .pedido-detalles {
+    font-size: 0.95rem;
+  }
+
+  .pedido-total {
+    font-size: 0.95rem;
+  }
+}

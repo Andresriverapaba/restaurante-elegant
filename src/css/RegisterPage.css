@@ -1,0 +1,83 @@
+.register-container form {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px 50px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  animation: aparecer 0.6s ease forwards;
+}
+
+.register-container h2 {
+  color: #800020;
+  font-size: 1.7rem;
+  margin-bottom: 25px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.register-container input {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f4f4f4;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  color: #800020;
+}
+
+.register-container input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #800020;
+  background-color: #fff;
+}
+
+.register-container button {
+  background-color: #800020;
+  color: #fff;
+  border: none;
+  padding: 12px 0;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.register-container button:hover {
+  background-color: #a00025;
+  transform: scale(1.03);
+  box-shadow: 0 6px 14px rgba(128, 0, 32, 0.3);
+}
+
+.register-container p {
+  color: #d10000;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 500px) {
+  .register-container form {
+    padding: 30px 25px;
+  }
+
+  .register-container h2 {
+    font-size: 1.5rem;
+  }
+}

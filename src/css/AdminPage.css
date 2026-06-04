@@ -1,0 +1,112 @@
+.admin-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.form-nuevo-plato {
+  margin-bottom: 20px;
+}
+
+.form-nuevo-plato input {
+  display: block;
+  margin-bottom: 8px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.form-nuevo-plato button {
+  padding: 10px 14px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.tabla-platos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  overflow-x: auto;
+  display: block;
+}
+
+.tabla-platos th,
+.tabla-platos td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.tabla-platos img {
+  max-width: 70px;
+  border-radius: 4px;
+}
+
+.tabla-platos button {
+  margin-right: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+}
+
+.contenedor-boton-toggle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.boton-toggle {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.boton-toggle:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 700px) {
+  .tabla-platos th,
+  .tabla-platos td {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .tabla-platos img {
+    max-width: 60px;
+  }
+
+  .form-nuevo-plato button {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-container {
+    padding: 15px;
+  }
+
+  .tabla-platos th,
+  .tabla-platos td {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .tabla-platos img {
+    max-width: 50px;
+  }
+
+  .boton-toggle {
+    width: 100%;
+  }
+}
