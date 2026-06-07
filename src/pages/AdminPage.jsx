@@ -5,7 +5,6 @@ import "../css/AdminPage.css";
 const API_URL =
   "https://api-restaurant-elegant-frdxh8dxbrhgcfcz.mexicocentral-01.azurewebsites.net/api/Platos";
 
-
 function AdminPage() {
   const [platos, setPlatos] = useState([]);
   const [mostrarEliminados, setMostrarEliminados] = useState(false);
@@ -39,7 +38,19 @@ function AdminPage() {
 
   const handleAdd = async () => {
     if (!nuevoPlato.nombre || !nuevoPlato.precio || !nuevoPlato.imagenUrl) {
-      toast.error("Completa todos los campos");
+      toast.error("Completa todos los campos obligatorios");
+      return;
+    }
+
+    // Validación de precio negativo
+    if (parseFloat(nuevoPlato.precio) < 0) {
+      toast.error("El precio no puede ser un valor negativo");
+      return;
+    }
+
+    // Validación de URL de imagen
+    if (nuevoPlato.imagenUrl.trim() === "") {
+      toast.error("La URL de la imagen es obligatoria");
       return;
     }
 
@@ -96,6 +107,18 @@ function AdminPage() {
   };
 
   const handleGuardarEdicion = async (id) => {
+    // Validación de precio negativo al editar
+    if (parseFloat(platoEditado.precio) < 0) {
+      toast.error("El precio no puede ser un valor negativo");
+      return;
+    }
+
+    // Validación de URL de imagen al editar
+    if (!platoEditado.imagenUrl || platoEditado.imagenUrl.trim() === "") {
+      toast.error("La URL de la imagen no puede quedar vacía");
+      return;
+    }
+
     try {
       const platoOriginal = platos.find((p) => p.id === id);
 

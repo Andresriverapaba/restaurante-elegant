@@ -13,11 +13,29 @@ export default function RegisterPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(""); // Limpiamos errores previos
+
+    // 1. Validación de Formato de Email
+    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (!emailRegex.test(email)) {
+      setError("Por favor, ingresa un formato de correo electrónico válido.");
+      return;
+    }
+
+    // 2. Validación de Contraseña (Alfanumérica entre 6 y 20 caracteres)
+    const passwordRegex = /^[a-zA-Z0-9]{6,20}$/;
+    if (!passwordRegex.test(password)) {
+      setError(
+        "La contraseña debe ser alfanumérica (solo letras y números) y tener entre 6 y 20 caracteres."
+      );
+      return;
+    }
+
     try {
       await register(nombre, email, password);
       navigate("/menu");
     } catch (err) {
-      setError("Error al registrar usuario");
+      setError("Error al registrar usuario. Es posible que el correo ya esté en uso.");
     }
   };
 
@@ -47,7 +65,7 @@ export default function RegisterPage() {
           required
         />
         <button type="submit">Crear cuenta</button>
-        {error && <p className="error">{error}</p>}
+        {error && <p className="error" style={{ color: "red", marginTop: "10px" }}>{error}</p>}
       </form>
     </div>
   );

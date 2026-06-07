@@ -6,14 +6,20 @@ import "../css/CartPage.css";
 const API_URL =
   "https://api-restaurant-elegant-frdxh8dxbrhgcfcz.mexicocentral-01.azurewebsites.net/api/pedidos";
 
-
 function CartPage() {
   const { cart, removeFromCart, updateQuantity, clearCart, total } = useCart();
   const { user } = useAuth();
 
   const finalizarPedido = async () => {
+    // Validación 1: Carrito no debe tener 0 ítems
     if (cart.length === 0) {
-      toast.warning("El carrito está vacío");
+      toast.warning("Tu carrito está vacío. Agrega platos antes de hacer un pedido.");
+      return;
+    }
+
+    // Validación 2: El total no puede ser 0 o menor
+    if (total <= 0) {
+      toast.error("El total del pedido debe ser mayor a $0.");
       return;
     }
 
@@ -45,7 +51,8 @@ function CartPage() {
         toast.success("✅ Pedido realizado con éxito");
         clearCart();
       } else {
-        toast.error("❌ Error al enviar el pedido");
+        const errorData = await res.json();
+        toast.error(`❌ ${errorData.message || "Error al enviar el pedido"}`);
       }
     } catch (error) {
       console.error("Error:", error);

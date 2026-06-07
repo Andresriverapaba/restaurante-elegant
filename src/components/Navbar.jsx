@@ -33,7 +33,7 @@ function Navbar() {
           <Link to="/mis-pedidos">Mis pedidos</Link>
       )}
 
-        {user && user.rol === "Cliente" && <Link to="/mis-pedidos">Mis pedidos</Link>}
+        
 
         {user && user.rol === "Admin" && (
           <>
