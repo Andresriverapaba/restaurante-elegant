@@ -1,46 +1,57 @@
 .admin-pedidos-container {
-  padding: 20px;
-  color: #333;
+  padding: 30px;
   font-family: "Poppins", sans-serif;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: auto;
+  color: #2d1e1e;
 }
 
 .admin-pedidos-container h2 {
   text-align: center;
-  margin-bottom: 25px;
-  color: #800020;
-  font-size: 1.8rem;
+  color: white;
+  background: linear-gradient(
+    135deg,
+    #e63946,
+    #ff6b35
+  );
+  display: inline-block;
+  padding: 15px 40px;
+  border-radius: 50px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(230,57,70,.35);
 }
 
 .tabla-pedidos-admin {
   width: 100%;
   border-collapse: collapse;
-  background: #fff;
-  border-radius: 12px;
+  background: #f8e0e0;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  display: block;
-  overflow-x: auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
 }
 
 .tabla-pedidos-admin thead {
-  background-color: #800020;
-  color: #fff;
+  background: linear-gradient(
+    135deg,
+    #e63946,
+    #ff6b35
+  );
+  color: white;
 }
 
 .tabla-pedidos-admin th,
 .tabla-pedidos-admin td {
   text-align: center;
   padding: 12px;
-  border-bottom: 1px solid #4b0a0a;
-  font-size: 0.95rem;
+  border: 1px solid #ddb68b;
+  font-size: .95rem;
   white-space: nowrap;
+  background: #fef6ef;
+  color: #2d1e1e;
 }
 
-.tabla-pedidos-admin tr:hover {
-  background-color: #f9f9f9;
-  transition: background-color 0.2s ease-in-out;
+.tabla-pedidos-admin tr:hover td {
+  background: #fff3e0;
 }
 
 .detalles-lista {
@@ -50,42 +61,53 @@
 }
 
 .detalles-lista li {
-  font-size: 0.9rem;
-  padding: 3px 0;
+  font-size: .9rem;
+  color: #7a4b2c;
+  padding: 4px 0;
 }
 
 button {
-  background-color: #800020;
-  color: white;
   border: none;
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 8px 14px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(
+    135deg,
+    #e63946,
+    #ff6b35
+  );
+  transition: .3s;
 }
 
 button:hover {
-  background-color: #a00025;
+  transform: scale(1.05);
+  color: #ffc857;
 }
 
 select {
-  background-color: #800020;
+  background: linear-gradient(
+    135deg,
+    #e63946,
+    #ff6b35
+  );
   color: white;
   border: none;
-  border-radius: 8px;
-  padding: 6px 10px;
+  border-radius: 10px;
+  padding: 8px 12px;
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.2s ease;
+  font-weight: 700;
+  transition: .3s;
 }
 
 select:hover {
-  background-color: #a00025;
+  color: #ffc857;
 }
 
 p {
   text-align: center;
-  color: #555;
+  color: #7a4b2c;
   font-size: 1rem;
   margin-top: 20px;
 }
@@ -93,7 +115,7 @@ p {
 @media (max-width: 768px) {
   .tabla-pedidos-admin th,
   .tabla-pedidos-admin td {
-    font-size: 0.85rem;
+    font-size: .85rem;
     padding: 8px;
   }
 
@@ -105,13 +127,12 @@ p {
 @media (max-width: 480px) {
   .tabla-pedidos-admin th,
   .tabla-pedidos-admin td {
-    font-size: 0.8rem;
+    font-size: .8rem;
     padding: 6px;
   }
 
   button,
   select {
-    padding: 8px 12px;
     width: 100%;
     margin-bottom: 6px;
   }

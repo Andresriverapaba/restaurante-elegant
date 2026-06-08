@@ -1,78 +1,163 @@
 .admin-container {
-  padding: 20px;
-  max-width: 900px;
+  padding: 30px;
+  max-width: 1200px;
   margin: auto;
+  font-family: "Poppins", sans-serif;
+  color: #2d1e1e;
+}
+
+.admin-container h2 {
+  text-align: center;
+  color: white;
+  background: linear-gradient(
+    135deg,
+    #e63946,
+    #ff6b35
+  );
+  display: inline-block;
+  padding: 15px 40px;
+  border-radius: 50px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(230,57,70,.35);
 }
 
 .form-nuevo-plato {
-  margin-bottom: 20px;
+   background: linear-gradient(
+    180deg,
+    #e9ddd0 0%,
+    #e0c1a9 100%
+  );
+  border: 2px solid #e2b381;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
 }
 
 .form-nuevo-plato input {
   display: block;
-  margin-bottom: 8px;
-  padding: 10px;
+  margin-bottom: 12px;
+  padding: 12px;
   width: 100%;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  border: 2px solid #eebf8e;
+  font-size: 15px;
+  transition: .3s;
+}
+
+.form-nuevo-plato input:focus {
+  outline: none;
+  border-color: #ff6b35;
+  box-shadow: 0 0 15px rgba(255,107,53,.2);
 }
 
 .form-nuevo-plato button {
-  padding: 10px 14px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
   width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  background: linear-gradient(
+    135deg,
+    #e63946,
+    #ff6b35
+  );
+  transition: .3s;
+}
+
+.form-nuevo-plato button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(230,57,70,.3);
 }
 
 .tabla-platos {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 30px;
+    background: linear-gradient(
+    180deg,
+    #e9ddd0 0%,
+    #e0c1a9 100%
+  );
+  border-radius: 20px;
+  overflow: hidden;
   overflow-x: auto;
-  display: block;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+.tabla-platos thead {
+  background: linear-gradient(
+    135deg,
+    #e63946,
+    #ff6b35
+  );
+  color: white;
 }
 
 .tabla-platos th,
 .tabla-platos td {
-  border: 1px solid #ccc;
-  padding: 10px;
+  border: 1px solid #ddb68b;
+  padding: 12px;
   text-align: left;
   font-size: 15px;
+  color: #2d1e1e;
+  background: #fef6ef;
+}
+
+.tabla-platos tr:hover td {
+  background: #fff3e0;
 }
 
 .tabla-platos img {
-  max-width: 70px;
-  border-radius: 4px;
+  max-width: 80px;
+  border-radius: 10px;
+  border: 2px solid #ddb68b;
 }
 
 .tabla-platos button {
   margin-right: 6px;
-  padding: 6px 10px;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 6px;
+  padding: 8px 12px;
   border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(
+    135deg,
+    #e63946,
+    #ff6b35
+  );
+  transition: .3s;
+}
+
+.tabla-platos button:hover {
+  transform: scale(1.05);
 }
 
 .contenedor-boton-toggle {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .boton-toggle {
-  background-color: #007bff;
-  color: white;
   border: none;
-  padding: 12px 18px;
-  border-radius: 8px;
+  padding: 14px 22px;
+  border-radius: 30px;
   cursor: pointer;
+  color: white;
+  font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    #e63946,
+    #ff6b35
+  );
+  transition: .3s;
 }
 
 .boton-toggle:hover {
-  background-color: #0056b3;
+  color: #ffc857;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 700px) {
@@ -84,10 +169,6 @@
 
   .tabla-platos img {
     max-width: 60px;
-  }
-
-  .form-nuevo-plato button {
-    padding: 12px;
   }
 }
 

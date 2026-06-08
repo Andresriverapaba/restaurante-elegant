@@ -1,130 +1,211 @@
 .mis-pedidos-container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-  color: #222;
+  background: linear-gradient(
+    180deg,
+    #e9ddd0 0%,
+    #e0c1a9 100%
+  );
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  font-family: "Poppins", sans-serif;
+  color: #2d1e1e;
   text-align: center;
 }
 
 .mis-pedidos-container h2 {
-  color: #800020;
-  margin-bottom: 25px;
+  color: white;
+  background: linear-gradient(
+    135deg,
+    #e63946,
+    #ff6b35
+  );
+  display: inline-block;
+  padding: 15px 40px;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(230,57,70,.35);
+  font-weight: 700;
   font-size: 1.8rem;
+  margin-bottom: 40px;
 }
 
 .loading,
 .no-pedidos {
-  color: #666;
+  color: #7a4b2c;
   font-size: 1.1rem;
+  padding-top: 40px;
 }
 
 .pedidos-grid {
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  justify-items: center;
 }
 
 .pedido-card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  padding: 15px;
-  transition: transform 0.2s ease;
+  background: #f8e0e0;
+  border: 2px solid #ddb68b;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: .3s;
 }
 
 .pedido-card:hover {
-  transform: scale(1.02);
+  transform: translateY(-5px);
+  border-color: #ff6b35;
+  box-shadow: 0 15px 35px rgba(255,107,53,.25);
 }
 
 .pedido-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #800020;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
+  border-bottom: 2px solid #ddb68b;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .pedido-id {
-  font-weight: bold;
-  color: #800020;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #e63946;
 }
 
 .pedido-fecha {
   font-size: 0.9rem;
-  color: #666;
+  color: #7a4b2c;
+  text-align: left;
+  margin-bottom: 15px;
 }
 
 .pedido-detalles {
   list-style: none;
-  margin: 10px 0;
+  margin: 0 0 20px;
   padding: 0;
-  color: #333;
+  color: #2d1e1e;
   text-align: left;
+  flex-grow: 1;
+}
+
+.pedido-detalles li {
+  padding: 8px 0;
+  font-size: 0.95rem;
+  border-bottom: 1px dashed #ddb68b;
+}
+
+.pedido-detalles li:last-child {
+  border-bottom: none;
+}
+
+.item-cantidad {
+  color: #e63946;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.pedido-footer {
+  border-top: 2px solid #ddb68b;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .pedido-total {
   font-size: 1rem;
-  color: #333;
-  margin-top: 10px;
+  color: #2d1e1e;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
+.pedido-total strong {
+  color: #e63946;
+  font-size: 1.2rem;
+}
+
+.btn-repetir-pedido {
+  background: linear-gradient(
+    135deg,
+    #e63946,
+    #ff6b35
+  );
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 30px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .3s;
+  width: 100%;
+}
+
+.btn-repetir-pedido:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(230,57,70,.3);
+}
+
+/* Estados */
+
 .estado {
-  font-weight: bold;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
 }
 
 .estado.pendiente {
-  background: #fff3cd;
-  color: #856404;
+  background: #fff4d6;
+  color: #d97706;
+  border: 1px solid #fbbf24;
 }
 
 .estado.preparando {
-  background: #cce5ff;
-  color: #004085;
+  background: #dbeafe;
+  color: #2563eb;
+  border: 1px solid #60a5fa;
 }
 
 .estado.listo {
-  background: #d4edda;
-  color: #155724;
+  background: #dcfce7;
+  color: #16a34a;
+  border: 1px solid #4ade80;
 }
 
 .estado.entregado {
-  background: #b8e0b8;
-  color: #155724;
+  background: #ccfbf1;
+  color: #0f766e;
+  border: 1px solid #2dd4bf;
 }
 
 .estado.cancelado {
-  background: #f8d7da;
-  color: #721c24;
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #f87171;
 }
 
 @media (max-width: 600px) {
   .mis-pedidos-container {
-    padding: 15px;
+    padding: 30px 15px;
   }
 
   .mis-pedidos-container h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    padding: 12px 25px;
   }
 
-  .pedido-card {
-    padding: 12px;
-  }
-
-  .pedido-header {
-    flex-direction: column;
-    gap: 5px;
-    text-align: center;
-  }
-
-  .pedido-detalles {
-    font-size: 0.95rem;
-  }
-
-  .pedido-total {
-    font-size: 0.95rem;
+  .pedidos-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin: 0 auto;
   }
 }

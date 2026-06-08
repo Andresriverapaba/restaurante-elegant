@@ -1,6 +1,7 @@
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom"; // 1. Importamos useNavigate
 import "../css/CartPage.css"; 
 
 const API_URL =
@@ -9,15 +10,14 @@ const API_URL =
 function CartPage() {
   const { cart, removeFromCart, updateQuantity, clearCart, total } = useCart();
   const { user } = useAuth();
+  const navigate = useNavigate(); // 2. Inicializamos el hook
 
   const finalizarPedido = async () => {
-    // Validación 1: Carrito no debe tener 0 ítems
     if (cart.length === 0) {
       toast.warning("Tu carrito está vacío. Agrega platos antes de hacer un pedido.");
       return;
     }
 
-    // Validación 2: El total no puede ser 0 o menor
     if (total <= 0) {
       toast.error("El total del pedido debe ser mayor a $0.");
       return;
@@ -50,6 +50,7 @@ function CartPage() {
       if (res.ok) {
         toast.success("✅ Pedido realizado con éxito");
         clearCart();
+        navigate("/mis-pedidos"); // 3. Redirección automática
       } else {
         const errorData = await res.json();
         toast.error(`❌ ${errorData.message || "Error al enviar el pedido"}`);

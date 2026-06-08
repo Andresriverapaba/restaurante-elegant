@@ -5,13 +5,11 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  // Cargar carrito del localStorage al inicio
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(saved);
   }, []);
 
-  // Guardar carrito en localStorage al cambiar
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
@@ -21,9 +19,7 @@ export const CartProvider = ({ children }) => {
       const found = prev.find((item) => item.id === plato.id);
       if (found) {
         return prev.map((item) =>
-          item.id === plato.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
+          item.id === plato.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
       return [...prev, { ...plato, quantity: 1 }];
@@ -44,11 +40,13 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  // Cálculo del total de ítems para el icono
+  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
   const total = cart.reduce((acc, item) => acc + item.precio * item.quantity, 0);
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, total }}
+      value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, total, totalItems }}
     >
       {children}
     </CartContext.Provider>
