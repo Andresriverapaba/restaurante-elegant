@@ -126,4 +126,3 @@ export default function FacturaPage() {
     </div>
   );
 }
-4

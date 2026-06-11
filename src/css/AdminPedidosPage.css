@@ -137,3 +137,24 @@ p {
     margin-bottom: 6px;
   }
 }
+.acciones-pedido {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-factura {
+  background: #4caf50;
+  color: white;
+  text-decoration: none;
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: .3s;
+}
+
+.btn-factura:hover {
+  background: #388e3c;
+}

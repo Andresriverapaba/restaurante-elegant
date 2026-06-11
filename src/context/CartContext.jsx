@@ -17,11 +17,15 @@ export const CartProvider = ({ children }) => {
   const addToCart = (plato) => {
     setCart((prev) => {
       const found = prev.find((item) => item.id === plato.id);
+
       if (found) {
         return prev.map((item) =>
-          item.id === plato.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === plato.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
         );
       }
+
       return [...prev, { ...plato, quantity: 1 }];
     });
   };
@@ -35,18 +39,52 @@ export const CartProvider = ({ children }) => {
   const updateQuantity = (id, quantity) => {
     setCart((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item
+        item.id === id
+          ? { ...item, quantity: Math.max(1, quantity) }
+          : item
       )
     );
   };
 
-  // Cálculo del total de ítems para el icono
-  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
-  const total = cart.reduce((acc, item) => acc + item.precio * item.quantity, 0);
+  // Cargar un pedido completo nuevamente al carrito
+  const loadOrderIntoCart = (detalles) => {
+    const nuevosItems = detalles
+      .filter((d) => d.plato)
+      .map((detalle) => ({
+        id: detalle.plato.id,
+        nombre: detalle.plato.nombre,
+        descripcion: detalle.plato.descripcion,
+        precio: detalle.plato.precio,
+        imagenUrl: detalle.plato.imagenUrl,
+        quantity: detalle.cantidad,
+      }));
+
+    setCart(nuevosItems);
+  };
+
+  // Totales
+  const totalItems = cart.reduce(
+    (acc, item) => acc + item.quantity,
+    0
+  );
+
+  const total = cart.reduce(
+    (acc, item) => acc + item.precio * item.quantity,
+    0
+  );
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, total, totalItems }}
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        clearCart,
+        loadOrderIntoCart,
+        total,
+        totalItems,
+      }}
     >
       {children}
     </CartContext.Provider>

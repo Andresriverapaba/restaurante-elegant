@@ -8,15 +8,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0rem 10rem;
+  padding: 0 6rem;
   box-shadow: 0 6px 25px rgba(230,57,70,.35);
+  flex-wrap: wrap;
 }
 
 .navbar-left {
   display: flex;
   align-items: center;
-  gap: 100px;
-  padding: 10px;
+  gap: 60px;
+  padding: 10px 0;
 }
 
 .navbar-logo {
@@ -25,17 +26,20 @@
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid rgba(255,255,255,.3);
+  flex-shrink: 0;
 }
 
 .navbar-title {
-  font-size: 40PX;
+  font-size: 40px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .navbar-links {
   display: flex;
   gap: 1.5rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .navbar-links a,
@@ -43,6 +47,7 @@
   color: white;
   font-weight: 1000;
   transition: .3s;
+  text-decoration: none;
 }
 
 .navbar-links a:hover,
@@ -54,26 +59,96 @@
   background: transparent;
   border: none;
   cursor: pointer;
+  font-size: inherit;
 }
 
-@media (max-width: 900px) {
+/* Tablets grandes */
+
+@media (max-width: 1200px) {
   .navbar {
-    padding: 1rem 3rem;
+    padding: 0 3rem;
   }
 
   .navbar-left {
-    gap: 40px;
+    gap: 30px;
+  }
+
+  .navbar-title {
+    font-size: 32px;
   }
 }
+
+/* Tablets */
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 1rem 2rem;
+    gap: 15px;
+  }
+
+  .navbar-left {
+    gap: 20px;
+  }
+
+  .navbar-logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .navbar-title {
+    font-size: 26px;
+  }
+
+  .navbar-links {
+    gap: 1rem;
+  }
+}
+
+/* Móviles */
 
 @media (max-width: 550px) {
   .navbar {
     flex-direction: column;
     padding: 1rem;
+    text-align: center;
+  }
+
+  .navbar-left {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .navbar-logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .navbar-title {
+    font-size: 22px;
+    white-space: normal;
+  }
+
+  .navbar-links {
+    justify-content: center;
+    gap: 12px;
+  }
+}
+
+/* Móviles pequeños */
+
+@media (max-width: 400px) {
+  .navbar-title {
+    font-size: 18px;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    gap: 8px;
   }
 }
 
 /* Icono Flotante del Carrito */
+
 .floating-cart {
   position: fixed;
   bottom: 30px;
@@ -107,4 +182,13 @@
   padding: 2px 8px;
   font-size: 0.8rem;
   font-weight: bold;
+}
+
+@media (max-width: 550px) {
+  .floating-cart {
+    width: 55px;
+    height: 55px;
+    bottom: 20px;
+    right: 20px;
+  }
 }

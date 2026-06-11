@@ -27,7 +27,6 @@ function Navbar() {
           {user && user.rol === "Cliente" && <Link to="/cart">Carrito</Link>}
           {user && user.rol === "Admin" && <Link to="/admin">Panel Admin</Link>}
           {user && user.rol === "Cliente" && <Link to="/mis-pedidos">Mis pedidos</Link>}
-          {user && user.rol === "Admin" && <Link to="/admin/pedidos">Pedidos</Link>}
           {!user && (
             <>
               <Link to="/login">Login</Link>

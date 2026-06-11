@@ -1,9 +1,4 @@
 .mis-pedidos-container {
-  background: linear-gradient(
-    180deg,
-    #e9ddd0 0%,
-    #e0c1a9 100%
-  );
   min-height: 100vh;
   max-width: 1200px;
   margin: 0 auto;
@@ -54,6 +49,7 @@
   flex-direction: column;
   justify-content: space-between;
   transition: .3s;
+  overflow-wrap: break-word;
 }
 
 .pedido-card:hover {
@@ -66,6 +62,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
   border-bottom: 2px solid #ddb68b;
   padding-bottom: 10px;
   margin-bottom: 15px;
@@ -123,6 +120,7 @@
   margin: 0;
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .pedido-total strong {
@@ -161,6 +159,7 @@
   border-radius: 20px;
   font-size: 0.8rem;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .estado.pendiente {
@@ -193,6 +192,30 @@
   border: 1px solid #f87171;
 }
 
+/* Tablets */
+
+@media (max-width: 768px) {
+  .mis-pedidos-container {
+    padding: 40px 18px;
+  }
+
+  .mis-pedidos-container h2 {
+    font-size: 1.6rem;
+    padding: 14px 30px;
+  }
+
+  .pedidos-grid {
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .pedido-card {
+    padding: 18px;
+  }
+}
+
+/* Celulares */
+
 @media (max-width: 600px) {
   .mis-pedidos-container {
     padding: 30px 15px;
@@ -207,5 +230,46 @@
     grid-template-columns: 1fr;
     max-width: 360px;
     margin: 0 auto;
+    gap: 20px;
+  }
+
+  .pedido-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pedido-total {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pedido-id {
+    font-size: 1rem;
+  }
+
+  .pedido-detalles li {
+    font-size: 0.9rem;
+  }
+}
+
+/* Celulares pequeños */
+
+@media (max-width: 400px) {
+  .mis-pedidos-container h2 {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+
+  .pedido-card {
+    padding: 15px;
+  }
+
+  .btn-repetir-pedido {
+    font-size: 0.9rem;
+  }
+
+  .estado {
+    font-size: 0.75rem;
+    padding: 5px 10px;
   }
 }
