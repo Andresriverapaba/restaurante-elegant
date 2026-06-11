@@ -495,3 +495,7 @@
   width: 100%;
   overflow-x: auto;
 }
+
+.card-operativa.cancelado .numero {
+  color: #616161;
+}

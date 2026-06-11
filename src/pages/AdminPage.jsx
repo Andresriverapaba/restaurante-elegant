@@ -15,6 +15,7 @@ function AdminPage() {
   
   // Filtro de Fecha exclusivo para la pestaña de GESTIÓN DE PEDIDOS (Vacío significa "Todos")
   const [fechaFiltroPedidos, setFechaFiltroPedidos] = useState("");
+  
 
   // Estados de Platos
   const [platos, setPlatos] = useState([]);
@@ -183,6 +184,36 @@ function AdminPage() {
     return Object.entries(desglose);
   };
 
+const formatearFechaLocal = (fecha) => {
+  const d = new Date(fecha);
+
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+};
+  
+const pedidosDelDia = pedidos.filter((p) => {
+  return formatearFechaLocal(p.fecha) === fechaFiltro;
+});
+
+const pendientesHoy = pedidosDelDia.filter(
+  (p) => p.estado === "Pendiente"
+).length;
+
+const preparandoHoy = pedidosDelDia.filter(
+  (p) => p.estado === "Preparando"
+).length;
+
+const listosHoy = pedidosDelDia.filter(
+  (p) => p.estado === "Listo"
+).length;
+
+const entregadosHoy = pedidosDelDia.filter(
+  (p) => p.estado === "Entregado"
+).length;
+const canceladosHoy = pedidosDelDia.filter(
+  (p) => p.estado === "Cancelado"
+).length;
+
+
   // Filtro reactivo local para la tabla de despacho de pedidos
   const pedidosFiltrados = pedidos.filter((p) => {
     if (!fechaFiltroPedidos) return true;
@@ -280,19 +311,25 @@ function AdminPage() {
           {loadingPedidos ? <p>Cargando lista de pedidos...</p> : (
             <table className="tabla-platos">
               <thead>
-                <tr>
-                  <th>ID Pedido</th>
-                  <th>Fecha</th>
-                  <th>Total</th>
-                  <th>Estado Actual</th>
-                  <th>Acciones de Despacho</th>
-                </tr>
+               <tr>
+                <th>ID Pedido</th>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Estado Actual</th>
+                <th>Acciones de Despacho</th>
+              </tr>
               </thead>
               <tbody>
                 {pedidosFiltrados.length > 0 ? (
                   pedidosFiltrados.map((ped) => (
                     <tr key={ped.id}>
                       <td><strong>#{ped.id}</strong></td>
+
+                      <td>
+                        <strong>{ped.cliente}</strong>
+                      </td>
+
                       <td>{new Date(ped.fecha).toLocaleString()}</td>
                       <td><strong className="texto-verde">${ped.total.toLocaleString()}</strong></td>
                       <td><span className={`estado-badge ${ped.estado.toLowerCase()}`}>{ped.estado}</span></td>
@@ -323,7 +360,7 @@ function AdminPage() {
                     </tr>
                   ))
                 ) : (
-                  <tr><td colSpan="5" style={{textAlign: "center", padding: "15px"}}>No hay pedidos registrados en la fecha seleccionada.</td></tr>
+                  <tr><td colSpan="6" style={{textAlign: "center", padding: "15px"}}>No hay pedidos registrados en la fecha seleccionada.</td></tr>
                 )}
               </tbody>
             </table>
@@ -357,11 +394,11 @@ function AdminPage() {
                   <span className="sub-valor">{reporteData.cantidadPlatoMasVendidoHoy} unidades vendidas</span>
                 </div>
                 <div className="card-reporte generado">
-                  <h4>💰 Ventas Totales del Día</h4>
+                  <h4>💰 Ventas Generadas</h4>
                   <p className="valor">${reporteData.dineroGeneradoHoy.toLocaleString()}</p>
                 </div>
                 <div className="card-reporte ingresado">
-                  <h4>✅ Total en Caja (Entregados)</h4>
+                  <h4> 💵 Ingresos Confirmados</h4>
                   <p className="valor">${reporteData.dineroIngresadoHoy.toLocaleString()}</p>
                 </div>
               </div>
@@ -395,27 +432,26 @@ function AdminPage() {
               <h3>⚡ Monitoreo de Operaciones Activas de la Cocina (Tiempo Real)</h3>
                     <div className="operaciones-grid">
                       <div className="card-operativa pendiente">
-                        <span className="numero">{reporteData.pedidosPendientes}</span>
+                        <span className="numero">{pendientesHoy}</span>
                         <span className="etiqueta">Por Aprobar</span>
                       </div>
                       <div className="card-operativa preparando">
-                        <span className="numero">{reporteData.pedidosPreparando}</span>
+                        <span className="numero">{pendientesHoy}</span>
                         <span className="etiqueta">En Cocina</span>
                       </div>
                       <div className="card-operativa listo">
-                        <span className="numero">{reporteData.pedidosListos}</span>
+                        <span className="numero">{listosHoy}</span>
                         <span className="etiqueta">Listos</span>
                       </div>
                       {/* NUEVO RECUADRO: Calculado dinámicamente para el día seleccionado */}
                       <div className="card-operativa entregado">
-                        <span className="numero">
-                          {pedidos.filter(p => {
-                            const fPedido = new Date(p.fecha).toISOString().split("T")[0];
-                            return fPedido === fechaFiltro && p.estado === "Entregado";
-                          }).length}
-                        </span>
+                       <span className="numero">{entregadosHoy}</span>
                         <span className="etiqueta">Entregados Hoy</span>
                       </div>
+                      <div className="card-operativa cancelado">
+                      <span className="numero">{canceladosHoy}</span>
+                      <span className="etiqueta">Cancelados</span>
+                    </div>
                     </div>
 
               <h3>🕐 Distribución de Ventas por Horas</h3>
